@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Online Medicine Store - Buy & Sell Leftover Medicines</title>
+    <style>
+        .sss {
+            margin-left: 100px;
+            display: flex;
+        }
+        .sss img {
+            width: 40px;
+            margin-right: 10px;
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            background-color: #48D1CC;
+            padding: 10px;
+            color: white;
+        }
+        header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        header a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .search-bar {
+            flex-grow: 1;
+            margin: 0 20px;
+        }
+        .search-bar input {
+            width: 370%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        .hero-banner {
+            text-align: center;
+            padding: 95px;
+            background-color: #f9f9f9;
+            background-image: url(back1.jpg);
+        }
+        .hero-banner h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        .hero-banner p {
+            font-size: 25px;
+        }
+        .categories, .top-selling {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+        }
+        .category, .product {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            width: 30%;
+        }
+        .product img, h4, p {
+            padding: 20px;
+        }
+        .product {
+            margin-left: 10px;
+        }
+        .product img {
+            width: 200px;
+            height: 200px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+        #cart-items img {
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header Section -->
+<header>
+    <div class="sss">
+        <img src="cost.png" alt="logo"/>
+        <div class="logo">MediExchange</div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search medicines...">
+        </div>
+    </div>
+    <div class="auth-links">
+        <a href="login.html">Login</a>
+        <a href="sell_medicines.html">Sell Medicines</a>
+        <a href="cart.html" id="cart">🛒 Cart (0)</a>
+    </div>
+</header>
+
+<!-- Hero Banner -->
+<section class="hero-banner">
+    <h1>Buy and Sell Leftover Medicines</h1>
+    <p>Sell your leftover medicines and buy affordable, safe medicines delivered to your doorstep.</p>
+</section>
+
+<!-- Categories Section -->
+<section class="categories">
+    <div class="category">
+        <h3>Prescription Medicines</h3>
+    </div>
+    <div class="category">
+        <h3>Over-the-Counter Medicines</h3>
+    </div>
+</section>
+
+<!-- Top-Selling Products -->
+<section class="top-selling">
+    <div class="product">
+        <img src="med.jpg" alt="medicine 1"/>
+        <h4>Medicine 1</h4>
+        <p>Rs.20 <button onclick="addToCart(this)">Add to Cart</button></p>
+    </div>
+    <div class="product">
+        <img src="OIP.jpeg" alt="medicine 3"/>
+        <h4>Medicine 2</h4>
+        <p>Rs.30 <button onclick="addToCart(this)">Add to Cart</button></p>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>© 2024 MediExchange. All Rights Reserved.</p>
+</footer>
+
+<!-- Cart Items Section -->
+<div id="cart-items"></div>
+
+<script>
+    let cartCount = 0;
+
+    function addToCart(button) {
+        cartCount++;
+        document.getElementById('cart').innerHTML = `🛒 Cart (${cartCount})`;
+
+        const product = button.parentElement.parentElement;
+        const img = product.querySelector('img');
+
+        // Get existing cart items from localStorage
+        let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        
+        // Add the new item's image URL to the cart
+        cartItems.push(img.src);
+
+        // Save back to localStorage
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    }
+</script>
+
+
+
+</body>
+</html>

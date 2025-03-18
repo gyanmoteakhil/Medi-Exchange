@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sell Your Medicine - MediExchange</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url("img.jpeg");
+            background-repeat: no-repeat;
+            background-position: 100%;
+            
+
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #C4EDEF;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"], input[type="number"], input[type="date"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #679d9f;
+            background-color: #C4EDEF;
+            border-radius: 5px;
+        }
+        input[type="file"] {
+            margin-bottom: 20px;
+        }
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Sell Your Medicine</h1>
+    
+    <form action="/submit-medicine" method="post" enctype="multipart/form-data">
+        <label for="medicine-name">Medicine Name:</label>
+        <input type="text" id="medicine-name" name="medicine-name" required>
+        
+        <label for="expiry-date">Expiry Date:</label>
+        <input type="date" id="expiry-date" name="expiry-date" required>
+        
+        <label for="quantity">Quantity (in packs or strips):</label>
+        <input type="number" id="quantity" name="quantity" min="1" required>
+        
+        <label for="price">Price (per pack):</label>
+        <input type="number" id="price" name="price" min="0.01" step="0.01" required>
+        
+        <label for="description">Description (optional):</label>
+        <textarea id="description" name="description" rows="4"></textarea>
+        
+        <label for="medicine-photo">Upload Medicine Photo:</label>
+        <input type="file" id="medicine-photo" name="medicine-photo" accept="image/*" required>
+        
+        <button type="submit">Submit Medicine for Sale</button>
+    </form>
+</div>
+
+</body>
+</html>
